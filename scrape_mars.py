@@ -51,7 +51,6 @@ def scrape():
         news_p
 
 
-    browser.quit()
     
     #-------------------------------------------------------------- End NASA Mars News End --------------------------------------------------------------
 
@@ -74,7 +73,7 @@ def scrape():
     featured_image_url = ('https://data-class-jpl-space.s3.amazonaws.com/JPL_Space/' + featured_image).replace(' ','%20')
     print(featured_image_url)
 
-    browser.quit()
+
 
     #----------------------------------------------- End JPL Mars Space Images - Featured Image End ------------------------------------------------------
 
@@ -136,7 +135,7 @@ def scrape():
         print('------------------------------------------------------------------------------')
 
 
-    browser.quit()
+
 
 
     img_url = []
@@ -162,7 +161,7 @@ def scrape():
                 'img_url': url}
             hemisphere_image_urls.append(dict)
             
-            browser.quit()
+
 
     mars_data = {
         'news_title': news_title,
@@ -176,5 +175,7 @@ def scrape():
         'hemisphere_image_urls': hemisphere_image_urls
     }   
     return(mars_data)
+
+    browser.quit()
 
 #------------------------------------------------------------- End Mars Hemispheres End-------------------------------------------------------------------

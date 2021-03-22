@@ -6,14 +6,35 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Mars</title>
-  <link rel="stylesheet" href="style.css" type="text/css"/>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="/static/style.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+  integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <script src= "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
 </head>
 
-<body>
-    <header class="header">
-        <div class="logo-box>">
-            
-        </div>
-    </header>
+
+<body  onload="window.location.hash = 'start'">
+  <a name="top"></a>
+  <div class="webpage">
+    <div class="end-section" id="top">
+      <a class="icon" href="#top">
+        <img class="logo" src="/static/images/Rocket2.svg" width="50" height="60">
+      </a>
+      <h1 class="land">Prepare for Landing!</h1>
+      <p><a class="btn btn-primary btn-lg" href="/scrape" target="top" rel="noreferrer" role="botton">Explore Mars!</a></p>
+    </div>
+  </div>
+  <div class="webpage main">
+    <div class="start-section" id="start">
+      <div class="heading-container">
+        <h1 class="heading-primary-main" style="opacity:1">Mission to Mars</h1>
+        <h2 class="heading-primary-sub" style="opacity:1">Explore the Red Planet</h2>
+      </div>
+      <a class="icon" href="#top">
+        <img class="logo" src="/static/images/Rocket.svg" width="50" height="50">
+      </a>
+      <h1 class="launch">Launch!</h1>
+    </div>
+  </div>
 </body>
+</html>

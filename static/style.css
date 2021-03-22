@@ -1,0 +1,150 @@
+*{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: 'Courier New', Courier, monospace;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth !important;
+}
+
+body {
+    margin:0;
+    min-height: 100%;
+    background-color: black;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
+    line-height: 20px;
+    color:white;
+}
+
+
+/* --------------- page bodies --------------- */
+
+.webpage{
+    display: -webkit-flex;
+    display: -webkit-flex;
+    display: flex;
+    height: 100vh;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+
+.launch{
+    font-size: 30px;
+    font-family: 'Courier New', Courier, monospace;
+    line-height: 44px;
+    animation: blink 1.5s linear infinite;
+}
+
+.logo{
+    display: block;
+    width: 80px;
+    height: 100px;
+    animation: blink 1.5s linear infinite;
+}
+
+@keyframes blink {
+    0%{
+        opacity: 0;
+    }
+    50%{
+        opacity: 0.50;
+    }
+    100%{
+        opacity: 100;
+    }
+}
+
+
+
+
+
+
+/* home page */
+
+.start-section{
+    color: rgba(255, 255, 255, 0.774);
+    text-align: center;
+}
+
+.start-section{
+    display: -webkit-flex;
+    display: -webkit-flex;
+    display: flexbox;
+    padding-top: 35px;
+    padding-bottom: 35px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+    -webkit-box-align: center;
+    -webkit-box-pack: start;
+    align-items: center;
+    -webkit-box-flex: 1;
+    flex: 1;
+    background-image: url(/static/images/Mars_NASAJPLCaltechPIA14293.jpg);
+    background-position: 50% 50%;
+    background-size: cover;
+}
+
+
+.heading-primary-main{
+    display: block;
+    margin-block-start: 2em;
+	font-size: 7rem;
+	font-family: 'Courier New', Courier, monospace;
+    margin-bottom: 5px;
+}
+
+.heading-primary-sub{
+    font-size: 3rem;
+	font-family: 'Courier New', Courier, monospace;
+    margin-bottom: 200px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* content page */
+
+.end-section{
+    display: -webkit-flex;
+    display: -webkit-flex;
+    display: flex;
+    padding-top: 35px;
+    padding-bottom: 35px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-flex: 1;
+    flex: 1;
+    background-image: url(/static/images/mars_landscape.jpg);
+    background-size: cover;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+}
+
+
+.land{
+    font-size: 30px;
+    font-family: 'Courier New', Courier, monospace;
+    line-height: 44px;
+    animation: blink 1.5s linear infinite;  
+}
+
