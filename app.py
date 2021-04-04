@@ -17,10 +17,6 @@ def home():
     mars_data = mongo.db.collection.find_one()
     return render_template('index.html', mars_data=mars_data)
 
-def main():
-    pass
-    mars_data = mongo.db.collection.find_one()
-    app.add_url_rule('/','main', main)
 
 
 @app.route("/scrape")
