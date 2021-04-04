@@ -1,11 +1,13 @@
+/* --------------- default page body --------------- */
+
+/*bootstrap.min.css*/
+
+
 *{
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-}
-
-html {
-    font-family: 'Courier New', Courier, monospace;
+    font-family: Orbitron, 'Courier', monospace;
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
     scroll-behavior: smooth !important;
@@ -15,17 +17,15 @@ body {
     margin:0;
     min-height: 100%;
     background-color: black;
-    font-family: 'Courier New', Courier, monospace;
     font-size: 14px;
-    line-height: 20px;
     color:white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 
-/* --------------- page bodies --------------- */
-
 .webpage{
-    display: -webkit-flex;
     display: -webkit-flex;
     display: flex;
     height: 100vh;
@@ -33,17 +33,34 @@ body {
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
     flex-direction: column;
+    flex-wrap: wrap;
 }
+
+.loadpage{
+    display: -webkit-flex;
+    display: flex;
+    height: 100vh;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+
+/* --------------------------------------------- rockets and headers --------------------------------------------- */
 
 .launch{
     font-size: 30px;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: Orbitron, 'Courier', monospace;
     line-height: 44px;
     animation: blink 1.5s linear infinite;
 }
 
+
 .logo{
-    display: block;
+    display:flexbox;
+    align-self: center;
     width: 80px;
     height: 100px;
     animation: blink 1.5s linear infinite;
@@ -61,35 +78,18 @@ body {
     }
 }
 
-
-
-
-
-
-/* home page */
-
-.start-section{
-    color: rgba(255, 255, 255, 0.774);
-    text-align: center;
-}
-
-.start-section{
-    display: -webkit-flex;
-    display: -webkit-flex;
+header {
     display: flexbox;
-    padding-top: 35px;
-    padding-bottom: 35px;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-flex:inherit;
     -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
     flex-direction: column;
-    -webkit-box-align: center;
-    -webkit-box-pack: start;
+    -ms-flex-direction: column;
+    position: inherit;
     align-items: center;
-    -webkit-box-flex: 1;
-    flex: 1;
-    background-image: url(/static/images/Mars_NASAJPLCaltechPIA14293.jpg);
-    background-position: 50% 50%;
-    background-size: cover;
+    align-content: center;
+    font-family: Orbitron, 'Courier', monospace;
 }
 
 
@@ -97,54 +97,253 @@ body {
     display: block;
     margin-block-start: 2em;
 	font-size: 7rem;
-	font-family: 'Courier New', Courier, monospace;
     margin-bottom: 5px;
+    font-family: Orbitron, 'Courier', monospace;
 }
 
 .heading-primary-sub{
     font-size: 3rem;
-	font-family: 'Courier New', Courier, monospace;
     margin-bottom: 200px;
+    font-family: Orbitron, 'Courier', monospace;
 }
 
 
 
+/* --------------------------------------------- welcome page --------------------------------------------- */
 
 
 
-
-
-
-
-
-
-
-/* content page */
-
-.end-section{
+.start-section{
     display: -webkit-flex;
-    display: -webkit-flex;
+    display: flexbox;
     display: flex;
+    justify-content: space-between;
     padding-top: 35px;
     padding-bottom: 35px;
+    align-items: center;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
     flex-direction: column;
     -webkit-box-align: center;
+    -webkit-box-pack: start;
+    -webkit-box-flex: 1;
+    flex: 1;
+    background-image: url(/static/images/Mars_NASAJPLCaltechPIA14293.jpg);
+    background-size: 100% 100%;
+    background-position: 50% 50%;
+    color: rgba(255, 255, 255, 0.774);
+    text-align: center;
+}
+
+
+
+
+
+/* --------------------------------------------- content body --------------------------------------------- */
+
+
+
+.end-section{
+    display: -webkit-flex;
+    display: flexbox;
+    display: flex;
+    max-height: 100%;
+    justify-content: space-between;
+    padding-top: 35px;
+    padding-bottom: 35px;
     align-items: center;
+    -webkit-box-orient:vertical;
+    -webkit-box-direction:normal;
+    flex-direction: column;
+    -webkit-box-align:center;
     -webkit-box-flex: 1;
     flex: 1;
     background-image: url(/static/images/mars_landscape.jpg);
-    background-size: cover;
+    background-size: 100% 100%;
     background-position: 50% 50%;
     background-repeat: no-repeat;
+    flex-basis: | auto;
 }
 
 
-.land{
-    font-size: 30px;
-    font-family: 'Courier New', Courier, monospace;
-    line-height: 44px;
-    animation: blink 1.5s linear infinite;  
+.container.main-content {
+    width: 95%;
+    height: 80%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    padding: 5px;
+    flex-grow: 3;
+    margin: 10px;
+    border-style: solid;
+    border-color: rgba(191, 255, 236, 0.425);
+    border-width: thick;
+    border-radius: 10px;
+    border-top:transparent;
+    background-color: rgba(47, 79, 79, 0.11);
 }
 
+
+.row {
+    overflow-y: auto;
+    max-height: 100%;
+}
+.parent-row{
+    display: flex;
+}
+.children-columns{
+display: flex;
+}
+
+
+
+
+/* ---------------------------------------------  Inside Main content --------------------------------------------- */
+
+
+/* -------------------- Explore Mars Button  --------------------*/
+
+.explore-button {
+    display: inline-block;
+    background-color: #106b6252;
+    padding: .1em .1em;
+    font-size: x-large;
+    letter-spacing: 0.3em;
+    width: 50%;
+    margin-bottom: 50px;
+    justify-content: center;
+    margin: 0%;
+    border-width:thin;
+    border-color: rgba(4, 32, 68, 0.527);
+    border-radius: 10px;
+    border-style:solid;
+    border-top-color: transparent;
+    box-shadow:0 4px rgba(0, 32, 32, 0.87);
+}
+
+.button1 {
+    color: rgba(47, 172, 161, 0.692);
+    font-weight:bolder;
+    font-family: Orbitron, 'Courier', monospace;
+    font-size: 1.5em;
+    -webkit-animation: colorchange .6s infinite alternate;
+}
+@keyframes colorchange {
+    0% { color: rgb(0, 86, 88);}
+    100% { color: rgb(0, 170, 147);}
+  }
+
+
+/* -------------------- Hemisphere Slide -------------------- */
+
+#hemisphere.carousel.slide{
+    opacity: .7;
+}
+#hemisphere.carousel.slide:hover{opacity: 1;}
+
+
+#hemisphere > h4 {color: rgba(149, 218, 211);}
+
+
+/* -------------------- News -------------------- */
+
+
+#news.row {
+    background-color: #1e33331f !important;
+    border-top-color: #c6fff9ad !important;
+    border-width: thin !important;
+    border-left: transparent;
+    border-right: transparent;
+    border-bottom: #a1ccc885;
+    border-style:solid;
+    height: 100%;
+    align-items: center;
+}
+
+.news-display {
+    font-size: 1.5em;
+    color: #990000;
+    font-weight: bold;
+    font-family: Orbitron, 'Courier', monospace;
+}
+
+.d-sm-block.news-list{
+    display: flex;
+}
+
+#news.carousel.slide{
+    height: 100%;
+    width: 100%;
+}
+#news.carousel-control-prev{
+    left: 80% !important;
+}
+
+
+.article{
+    font-size-adjust: inherit;
+    font-size: 1.1em;
+    color: rgb(71, 0, 0);
+    font-weight: bold;
+    text-align-last: center;
+    font-family: Orbitron, 'Courier', monospace;
+}
+.article:hover{
+    color: rgb(216, 0, 0);
+    scroll-snap-stop:;
+}
+
+.card.card-body {
+    background-color: rgba(26, 117, 105, 0.219);
+    color: #001d20;
+    font-size: .8em;
+    font-weight: normal;
+    font-family: Orbitron, 'Courier', monospace;
+    text-align: start;
+}
+
+
+
+/* -------------------- Feautured Image -------------------- */
+
+
+.figure-img {opacity: .7;}
+.figure-img:hover{opacity: 1;}
+
+#featured > h4{ color: rgb(53, 94, 90);}
+
+
+
+/* -------------------- Mars Table -------------------- */
+
+#table > h4 {color: rgba(149, 218, 211);}
+
+.table.table-hover thead{
+    display: none;
+}
+
+.table .table {
+    background-color: #1e333359 !important;
+    align-content: stretch !important;
+}
+
+.dataframe{
+    color: lightyellow;
+    font-size: auto;
+    width: 100%;
+}
+.table th, .table td{
+    padding: 0 !important;
+}
+
+table.table-fit {
+    width: auto !important;
+    table-layout: auto !important;
+}
+table.table-fit thead th, table.table-fit tfoot th {
+    width: auto !important;
+}
+table.table-fit tbody td, table.table-fit tfoot td {
+    width: auto !important;
+}

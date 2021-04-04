@@ -1,4 +1,3 @@
-# Dependencies
 import os
 import pandas as pd
 import requests
@@ -16,14 +15,12 @@ def init_browser():
     return Browser("chrome", **executable_path, headless=False)
 
 
-def scrape():
+def scrape_info():
     browser = init_browser()
 
 
     #------------------------------------------------------------------ NASA Mars News ------------------------------------------------------------------
-
     # Scrape the [NASA Mars News Site](https://mars.nasa.gov/news/?page=0&per_page=40&order=publish_date+desc%2Ccreated_at+desc&search=&category=19%2C165%2C184%2C204&blank_scope=Latest) and collect the latest News Title and Paragraph Text. Assign the text to variables that you can reference later.
-
 
     url = 'https://mars.nasa.gov/news/?page=0&per_page=40&order=publish_date+desc%2Ccreated_at+desc&search=&category=19%2C165%2C184%2C204&blank_scope=Latest'
     browser.visit(url)
@@ -31,27 +28,21 @@ def scrape():
     html = browser.html
     soup = bs(html, 'html.parser')
 
-    # body headline
     results = soup.find_all('li', class_='slide')
 
-    # Print all headlines
-    news_title = []
-    # Retrieve the thread title
+
+    article = []
     for result in results:
         list = result.find('div', class_='content_title')
-        title = list.find('a', target='_self').text
-        news_title.append(title)
-        print(title)
-
-
-    news_p = []
-    for result in results:
+        news_title = list.find('a', target='_self').text
         title_body = result.find('div', class_='article_teaser_body').text
-        news_p.append(title_body)
-        news_p
 
 
-    
+        dict={'news_title': news_title,'title_body': title_body}
+        article.append(dict)
+
+
+
     #-------------------------------------------------------------- End NASA Mars News End --------------------------------------------------------------
 
 
@@ -71,7 +62,7 @@ def scrape():
 
     featured_image = soup.find('img', class_='headerimage fade-in')['src']
     featured_image_url = ('https://data-class-jpl-space.s3.amazonaws.com/JPL_Space/' + featured_image).replace(' ','%20')
-    print(featured_image_url)
+
 
 
 
@@ -86,19 +77,15 @@ def scrape():
 
     url = 'https://space-facts.com/mars/'
     tables = pd.read_html(requests.get(url).text)
-    tables
 
     profile_df = tables[0]
-    profile_df
 
     diagram_df = tables[1]
-    diagram_df
 
     html_profile_table = profile_df.to_html().replace('\n', '')
-    html_profile_table
 
     html_diagram_table = diagram_df.to_html().replace('\n', '')
-    html_diagram_table
+
 
     #---------------------------------------------------------------- End Mars Facts End ---------------------------------------------------------------------
 
@@ -117,7 +104,7 @@ def scrape():
 
 
     # List all Hemisphere links and title
-    hemisphere = soup.find_all('div', class_='item')
+    hemisphere = soup.find_all('div', class_='description')
 
     hemisphere_links = []    
     title = []
@@ -135,9 +122,6 @@ def scrape():
         print('------------------------------------------------------------------------------')
 
 
-
-
-
     img_url = []
     hemisphere_image_urls = []
 
@@ -151,31 +135,24 @@ def scrape():
             wide_image = items.find('div', class_='wide-image-wrapper')
             url = wide_image.find('a')['href']
             img_url.append(url)
-            print(url)
             
             content = items.find('div', class_='content')
             title = content.find('h2', class_='title').text.replace(" Enhanced", "")
-            print(title)
             
             dict={'title': title,
                 'img_url': url}
             hemisphere_image_urls.append(dict)
             
 
-
     mars_data = {
-        'news_title': news_title,
-        'news_p': news_p,
+        'article': article,
         'featured_image_url': featured_image_url,
         'html_profile_table': html_profile_table,
         'html_diagram_table': html_diagram_table,
-        'hemisphere_links': hemisphere_links,
-        'title': title,
-        'img_url': img_url,
         'hemisphere_image_urls': hemisphere_image_urls
-    }   
-    return(mars_data)
+    }
 
     browser.quit()
+    return(mars_data)
 
 #------------------------------------------------------------- End Mars Hemispheres End-------------------------------------------------------------------

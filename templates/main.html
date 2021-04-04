@@ -1,0 +1,112 @@
+{% extends "index.html" %}
+{% block content %}
+<div class="webpage">
+    <div class="end-section" id="top">
+        <div class="container main-content">
+            <div class="row p-md-2 justify-content-md-center">
+
+                <div class="col-sm-3 px-sm-4" id="featured">
+                    <h4>Featured Image</h4>
+                    <figure> <img src="{{ mars_data.featured_image_url }}" class="figure-img img-fluid rounded" alt="featured_image"></figure>
+                </div>
+                
+                <div class="col-sm-9" id="news">
+                    <div class="container news" id="news">
+                        <div class="row" id="news">
+                        <div class="col-12 news-display"> Featured News:
+                            <a id="news" class="carousel-control-prev" href="#d-sm-block news" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                              </a>
+                              <a id="news" class="carousel-control-next" href="#d-sm-block news" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                              </a>
+                        </div>
+                            <div class="col-12 news-list">
+                                <div id="d-sm-block news" class="carousel slide" data-ride="carousel">
+                                    <div class="carousel-inner">
+                                        {% for keys in mars_data.article %}
+                                        <div class="carousel-item {% if loop.index == 1 %}active{% endif %}">
+                                            <section><a class="article" href="#{{ keys['news_title'] }}" data-toggle="collapse" aria-expanded="false" aria-controls="{{ keys['news_title'] }}">{{ keys['news_title'] }}</a></section>
+                                            <div class="collapse" id="{{ keys['news_title'] }}">
+                                                <div class="card card-body">{{ keys['title_body'] }}</div>
+                                            </div>
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-4 px-sm-4" id="hemisphere">
+                    <h4>Mars Hemisphere</h4>
+                    <div id="hemisphere" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <li data-target="#hemisphere" data-slide-to="0" class="active"></li>
+                            <li data-target="#hemisphere" data-slide-to="1"></li>
+                            <li data-target="#hemisphere" data-slide-to="2"></li>
+                            <li data-target="#hemisphere" data-slide-to="3"></li>
+                        </ol>
+                        <div class="carousel-inner">
+                            {% for keys in mars_data.hemisphere_image_urls %}
+                            <div class="carousel-item {% if loop.index == 1 %}active{% endif %}">
+                                <img alt="d-block w-100" src="{{ keys['img_url'] }}" alt="{{ keys['title'] }}" class="img-fluid" alt="Responsive image">
+                                <div class="carousel-caption">
+                                <h6>{{ keys['title'] }}</h6>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <a class="carousel-control-prev" href="#hemisphere" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#hemisphere" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-sm-8 px-lg-5 my-auto" id="table">
+                    <h4 class="header px-md-5">Mars Facts</h4>
+                    <div class="table-responsive px-md-5" style="overflow: ;">
+                        <table class="table table-hover">
+                            <tr><td>
+                            {{ mars_data.html_profile_table | safe }}
+                            </td></tr>
+                        </table>
+                    </div>
+                </div>
+            
+            </div>
+        </div>
+        <button class="explore-button">
+            <a class="button1" aria-pressed="true" href="/scrape" target="top">EXPLORE MARS</a>
+        </button>
+    </div>
+</div>
+<div class="loadpage">
+    <div class="start-section" >
+        <header class="header bottom">
+            <h1 class="heading-primary-main" style="opacity:1">Mission to Mars</h1>
+            <h2 class="heading-primary-sub" style="opacity:1">Explore the Red Planet</h2>
+        </header>
+        <a class="icon" href="#top">
+        <img class="logo" src="/static/images/Rocket.svg">
+        </a>
+        <h1 class="launch" id="bottom">Launch!</h1>
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+{% endblock %}
+
+
+
+

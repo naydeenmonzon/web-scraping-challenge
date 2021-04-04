@@ -1,5 +1,5 @@
 import flask
-from flask import Flask, request, url_for, render_template, redirect
+from flask import Flask, request, url_for, render_template, redirect, make_response
 import pymongo
 from flask_pymongo import PyMongo
 import scrape_mars
@@ -13,20 +13,25 @@ mongo = PyMongo(app, uri="mongodb://localhost:27017/mars_app")
 
 @app.route("/")
 def home():
-
-    # Find one record of data from the mongo database
+    
     mars_data = mongo.db.collection.find_one()
+    return render_template('index.html', mars_data=mars_data)
 
-    # Return template and data
-    return render_template("index.html", mars_data=mars_data)
+def main():
+    pass
+    mars_data = mongo.db.collection.find_one()
+    app.add_url_rule('/','main', main)
+
 
 @app.route("/scrape")
 def scrape():
-    mars_data = mongo.db.mars_data
-    data = scrape_mars.scrape()
-    mars_data.update({}, data, upsert=True)
 
-    return redirect("/")
+    mars_data = scrape_mars.scrape_info()
+    mongo.db.collection.replace_one({}, mars_data, upsert=True)
+    
+    data = mongo.db.collection.find_one()
+    return render_template('main.html', mars_data=data)
 
+    
 if __name__ == "__main__":
     app.run(debug=True)
